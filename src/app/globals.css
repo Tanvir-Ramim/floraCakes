@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+
+body {
+    font-display: swap
+}
+
+
+@theme {
+
+    --color-primary: #323232;
+    --color-secondary: #6c6c6c;
+    --color-price: #c3c3c3;
+    --color-progress: #0dcaf0;
+    /* black */
+    --color-gray: #a3a3a3;
+    --color-title: #201f1f;
+    --color-subtitle: #606060;
+    --color-cardsub: #8c8c8c;
+    --color-author: #bd8448;
+    --color-hover-text: #bc8246;
+    --color-border-color: #ebebeb;
+    --color-border-light: #f5f5f5;
+    --color-bg-nav: #6c757d;
+    --color-buy-now: #1990c6;
+    --color-avail: #0066c0;
+    --color-cart-bg: #f8f8f8;
+    /* screen size */
+
+    --container-8xl: 96rem;
+    /* custom box shadow */
+    --shadow-custom: 0px 6px 15px rgba(0, 0, 0, .12);
+}
+
+
+.type-title-h1 {
+    @apply text-2xl lg:text-4xl text-title font-normal;
+}
+
+.type-subtitle-h2 {
+    @apply text-xs lg:text-sm text-subtitle font-normal;
+}
+
+.type-body-regular {
+    @apply text-sm font-normal;
+}
+
+
+/* Hide scrollbar while keeping scroll functionality */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+}
+
+/* globals.css */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f0f0f0;
+}
+
+/* Smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animation for infinite scroll loader */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}

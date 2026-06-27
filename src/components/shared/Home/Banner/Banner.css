@@ -1,0 +1,40 @@
+.custom-pagination .swiper-pagination-bullet {
+    /* background-color: #bd8448; */
+
+    width: 9px !important;
+    height: 9px !important;
+    /* position: absolute !important; */
+
+    background: transparent !important;
+
+    border: 1px solid #c19d56 !important;
+    /* border: 1px solid #0000 !important; */
+
+    border-radius: 0 !important;
+
+    cursor: pointer !important;
+
+    box-sizing: content-box !important;
+
+    transform: rotate(45deg) !important;
+
+    -webkit-transform: rotate(45deg) !important;
+
+    -moz-transform: rotate(45deg) !important;
+
+    transition: background 0.2s ease !important;
+
+    -webkit-transition: background 0.2s ease !important;
+
+
+}
+
+
+.custom-pagination .swiper-pagination-bullet-active {
+    /* opacity: 1; */
+
+    background: #c19d56 !important;
+    width: 9px !important;
+    height: 9px !important;
+    border-radius: 0 !important;
+}

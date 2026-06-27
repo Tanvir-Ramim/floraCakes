@@ -1,0 +1,244 @@
+[
+  {
+    "id": "1",
+    "label": "Kids Cake",
+    "href": "#",
+    "subMenu": {
+      "Character_Themed_Cakes": [
+        { "id": "1", "name": "Elsa Cakes (Frozen)", "href": "/cakes" },
+        { "id": "2", "name": "Frozen Theme Cakes", "href": "/cakes" },
+        { "id": "3", "name": "Barbie Cakes", "href": "/cakes" },
+        { "id": "4", "name": "Rapunzel Theme Cake", "href": "/cakes" },
+        { "id": "5", "name": "Princess Theme Cakes", "href": "/cakes" },
+        { "id": "6", "name": "Minnie Mouse Cakes", "href": "/cakes" },
+        { "id": "7", "name": "Mickey Mouse Cakes", "href": "/cakes" },
+        { "id": "8", "name": "Peppa Pig Cakes", "href": "/cakes" },
+        { "id": "9", "name": "Doraemon Cakes", "href": "/cakes" },
+        { "id": "10", "name": "Shin Chan Cakes", "href": "/cakes" },
+        { "id": "11", "name": "Boss Baby Cakes", "href": "/cakes" },
+        { "id": "12", "name": "Masha and the Bear Cake", "href": "/cakes" },
+        { "id": "13", "name": "Hello Kitty cake", "href": "/cakes" }
+      ],
+      "Superhero_Cakes": [
+        { "id": "14", "name": "Superhero Cakes", "href": "/cakes" },
+        { "id": "15", "name": "Avengers Theme Cakes", "href": "/cakes" },
+        { "id": "16", "name": "Spiderman Cakes", "href": "/cakes" },
+        { "id": "17", "name": "Superman Cakes", "href": "/cakes" },
+        { "id": "18", "name": "Batman Superhero Cakes", "href": "/cakes" },
+        { "id": "19", "name": "Wonder Woman Cakes", "href": "/cakes" },
+        { "id": "20", "name": "Marvel Theme Cakes", "href": "/cakes" }
+      ],
+      "Animal_Nature_Themed_Cakes": [
+        {
+          "id": "21",
+          "name": "Animal & Nature-Themed Cakes",
+          "href": "/cakes"
+        },
+        { "id": "22", "name": "Panda Theme Cakes", "href": "/cakes" },
+        { "id": "23", "name": "Jungle Theme Cakes", "href": "/cakes" },
+        { "id": "24", "name": "Animal Lover Cakes", "href": "/cakes" },
+        { "id": "25", "name": "Butterfly Cake", "href": "/cakes" },
+        { "id": "26", "name": "Honey Bee Cakes", "href": "/cakes" },
+        { "id": "27", "name": "Dinosaur Cakes", "href": "/cakes" }
+      ],
+      "Cartoon_Fantasy_Cakes": [
+        { "id": "28", "name": "Cartoon & Fantasy Cakes", "href": "/cakes" },
+        { "id": "29", "name": "Coco Melon Cakes", "href": "/cakes" },
+        { "id": "30", "name": "Pikachu Cakes", "href": "/cakes" },
+        { "id": "31", "name": "Angry Bird Cakes", "href": "/cakes" },
+        { "id": "32", "name": "Minion Theme Cakes", "href": "/cakes" },
+        { "id": "33", "name": "Train Theme Cake", "href": "/cakes" },
+        { "id": "34", "name": "Space Theme Cakes", "href": "/cakes" }
+      ]
+    }
+  },
+  {
+    "id": "2",
+    "label": "Birthday Cake",
+    "href": "#",
+    "subMenu": {
+      "By_Profession": [
+        { "id": "35", "name": "Doctor", "href": "/cakes" },
+        { "id": "36", "name": "Engineer", "href": "/cakes" },
+        { "id": "37", "name": "Computer Engineer 🆕", "href": "/cakes" },
+        { "id": "38", "name": "Teacher", "href": "/cakes" },
+        { "id": "39", "name": "Army Officer 🆕", "href": "/cakes" },
+        { "id": "40", "name": "Navy Officer 🆕", "href": "/cakes" },
+        { "id": "41", "name": "Pilot 🆕", "href": "/cakes" },
+        { "id": "42", "name": "Traveller", "href": "/cakes" },
+        { "id": "43", "name": "Cabin Crew", "href": "/cakes" },
+        { "id": "44", "name": "Advocate", "href": "/cakes" },
+        { "id": "45", "name": "DJ", "href": "/cakes" },
+        { "id": "46", "name": "Musician", "href": "/cakes" }
+      ],
+      "By_Age": [
+        { "id": "47", "name": "1st Birthday Cakes", "href": "/cakes" },
+        { "id": "48", "name": "18th Birthday Cakes", "href": "/cakes" },
+        { "id": "49", "name": "21st Birthday Cakes", "href": "/cakes" },
+        { "id": "50", "name": "25th Birthday Cakes", "href": "/cakes" },
+        { "id": "51", "name": "30th Birthday Cakes", "href": "/cakes" },
+        { "id": "52", "name": "40th Birthday Cakes", "href": "/cakes" },
+        { "id": "53", "name": "50th Birthday Cakes", "href": "/cakes" },
+        { "id": "54", "name": "60+ Birthday Cakes", "href": "/cakes" },
+        { "id": "55", "name": "Kids' Birthday Cakes", "href": "/cakes" },
+        { "id": "56", "name": "Teen Birthday Cakes", "href": "/cakes" },
+        { "id": "57", "name": "Adult Birthday Cakes", "href": "/cakes" }
+      ],
+      "By_Traits_Hobbies": [
+        { "id": "58", "name": "Biker", "href": "/cakes" },
+        { "id": "59", "name": "Gym Lover", "href": "/cakes" },
+        { "id": "60", "name": "Car Lover", "href": "/cakes" },
+        { "id": "61", "name": "Gamers", "href": "/cakes" },
+        { "id": "62", "name": "Foodie", "href": "/cakes" },
+        { "id": "63", "name": "TV Lovers", "href": "/cakes" },
+        { "id": "64", "name": "Blogger", "href": "/cakes" },
+        { "id": "65", "name": "Workaholic", "href": "/cakes" },
+        { "id": "66", "name": "Lazy Dude", "href": "/cakes" }
+      ],
+      "Evergreen_Trending_Themes": [
+        { "id": "67", "name": "All Theme Cakes", "href": "/cakes" },
+        { "id": "68", "name": "BTS Theme Cakes", "href": "/cakes" },
+        { "id": "69", "name": "Cricket Theme Cakes", "href": "/cakes" },
+        { "id": "70", "name": "Sports Theme Cakes", "href": "/cakes" },
+        { "id": "71", "name": "Footballer Cakes", "href": "/cakes" },
+        { "id": "72", "name": "Golfer Cakes", "href": "/cakes" },
+        { "id": "73", "name": "Carnival Theme Cakes", "href": "/cakes" },
+        { "id": "74", "name": "PUBG Lovers Cakes", "href": "/cakes" },
+        { "id": "75", "name": "Photographer Cakes", "href": "/cakes" },
+        { "id": "76", "name": "Fashion Designer Cakes", "href": "/cakes" },
+        { "id": "77", "name": "Makeup Theme Cakes", "href": "/cakes" },
+        { "id": "78", "name": "Unicorn Cakes", "href": "/cakes" },
+        { "id": "79", "name": "Quirky Cakes", "href": "/cakes" },
+        { "id": "80", "name": "Bag theme cake", "href": "/cakes" },
+        { "id": "81", "name": "Shopping Theme Cakes", "href": "/cakes" }
+      ]
+    }
+  },
+  {
+    "id": "3",
+    "label": "Wedding & Anniversary",
+    "href": "#",
+    "subMenu": {
+      "Wedding_Cakes": [
+        { "id": "82", "name": "All Wedding Cakes", "href": "/cakes" },
+        {
+          "id": "83",
+          "name": "Traditional Tiered Wedding Cakes",
+          "href": "/cakes"
+        },
+        { "id": "84", "name": "Floral Wedding Cakes", "href": "/cakes" },
+        { "id": "85", "name": "Minimalist Wedding Cakes", "href": "/cakes" },
+        { "id": "86", "name": "Royal Wedding Cakes", "href": "/cakes" },
+        { "id": "87", "name": "White & Gold Wedding Cakes", "href": "/cakes" },
+        { "id": "88", "name": "Rustic Wedding Cakes", "href": "/cakes" },
+        { "id": "89", "name": "Luxury Wedding Cakes", "href": "/cakes" },
+        { "id": "90", "name": "Engagement Cakes", "href": "/cakes" },
+        { "id": "91", "name": "Mehendi Cakes", "href": "/cakes" },
+        { "id": "92", "name": "Nikah Cakes", "href": "/cakes" },
+        { "id": "93", "name": "Walima Cakes", "href": "/cakes" },
+        { "id": "94", "name": "Hindu Wedding Cakes", "href": "/cakes" },
+        { "id": "95", "name": "Custom Theme Wedding Cakes", "href": "/cakes" }
+      ],
+      "Anniversary_Cakes": [
+        { "id": "96", "name": "All Anniversary Cakes", "href": "/cakes" },
+        { "id": "97", "name": "1st Anniversary Cakes", "href": "/cakes" },
+        { "id": "98", "name": "5th Anniversary Cakes", "href": "/cakes" },
+        { "id": "99", "name": "10th Anniversary Cakes", "href": "/cakes" },
+        {
+          "id": "100",
+          "name": "25th Anniversary Cakes (Silver Jubilee)",
+          "href": "/cakes"
+        },
+        {
+          "id": "101",
+          "name": "50th Anniversary Cakes (Golden Jubilee)",
+          "href": "/cakes"
+        },
+        { "id": "102", "name": "Heart-Shaped Cakes", "href": "/cakes" },
+        { "id": "103", "name": "Couple Figurine Cakes", "href": "/cakes" },
+        { "id": "104", "name": "Forever Love Cakes", "href": "/cakes" },
+        { "id": "105", "name": "Romantic Theme Cakes", "href": "/cakes" },
+        { "id": "106", "name": "Photo Anniversary Cakes", "href": "/cakes" },
+        { "id": "107", "name": "Floral Anniversary Cakes", "href": "/cakes" },
+        { "id": "108", "name": "Custom Anniversary Cakes", "href": "/cakes" }
+      ]
+    }
+  },
+  {
+    "id": "4",
+    "label": "Corporate Cakes",
+    "href": "#",
+    "subMenu": {
+      "Bulk_Corporate_Cakes": [
+        { "id": "109", "name": "All Corporate Cakes", "href": "/cakes" },
+        { "id": "110", "name": "Logo Cakes", "href": "/cakes" },
+        { "id": "111", "name": "Company Anniversary Cakes", "href": "/cakes" },
+        { "id": "112", "name": "Employee Birthday Cakes", "href": "/cakes" },
+        { "id": "113", "name": "Team Celebration Cakes", "href": "/cakes" },
+        { "id": "114", "name": "Farewell Cakes", "href": "/cakes" },
+        { "id": "115", "name": "Promotion Cakes", "href": "/cakes" },
+        { "id": "116", "name": "Welcome Cakes", "href": "/cakes" },
+        { "id": "117", "name": "Retirement Cakes", "href": "/cakes" },
+        { "id": "118", "name": "Achievement & Award Cakes", "href": "/cakes" },
+        { "id": "119", "name": "Year-End Celebration Cakes", "href": "/cakes" },
+        { "id": "120", "name": "Product Launch Cakes", "href": "/cakes" },
+        { "id": "121", "name": "Custom Message Cakes", "href": "/cakes" },
+        { "id": "122", "name": "Client Appreciation Cakes", "href": "/cakes" },
+        { "id": "123", "name": "Bulk Order Cakes for Events", "href": "/cakes" }
+      ],
+      "Corporate_Gifting": [
+        { "id": "124", "name": "Corporate Gifting", "href": "/cakes" },
+        {
+          "id": "125",
+          "name": "Corporate Cupcakes & Treat Boxes",
+          "href": "/cakes"
+        },
+        { "id": "126", "name": "All Corporate Gift Boxes", "href": "/cakes" },
+        { "id": "127", "name": "Cake & Treat Gift Boxes", "href": "/cakes" },
+        { "id": "128", "name": "Chocolate Gift Boxes", "href": "/cakes" },
+        { "id": "129", "name": "Macaron Gift Sets", "href": "/cakes" },
+        { "id": "130", "name": "Brownie & Bar Boxes", "href": "/cakes" },
+        { "id": "131", "name": "Custom Logo Treat Boxes", "href": "/cakes" },
+        {
+          "id": "132",
+          "name": "Personalized Message Gift Boxes",
+          "href": "/cakes"
+        },
+        {
+          "id": "133",
+          "name": "Employee Appreciation Gifts",
+          "href": "/cakes"
+        },
+        {
+          "id": "134",
+          "name": "Client Onboarding Gift Sets",
+          "href": "/cakes"
+        },
+        {
+          "id": "135",
+          "name": "Festival & Holiday Gift Boxes",
+          "href": "/cakes"
+        },
+        {
+          "id": "136",
+          "name": "Year-End Appreciation Gifts",
+          "href": "/cakes"
+        },
+        { "id": "137", "name": "Product Launch Gifting", "href": "/cakes" },
+        {
+          "id": "138",
+          "name": "Corporate Hampers (Mixed Treats)",
+          "href": "/cakes"
+        },
+        { "id": "139", "name": "Luxury Gifting Solutions", "href": "/cakes" }
+      ],
+      "Corporate_Events": [
+        {
+          "id": "140",
+          "name": "Bulk Orders for Corporate Events",
+          "href": "/cakes"
+        }
+      ]
+    }
+  }
+]
