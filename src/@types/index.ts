@@ -141,6 +141,12 @@ export interface IAddon {
   price: number;
   image?: IImage;
 }
+export interface IAddon2 {
+  type?: AddonType;
+  name: string;
+  price: number;
+  image?: string;
+}
 // types/order.ts
 export interface CustomerOrderForm {
   // Customer Information
@@ -148,9 +154,10 @@ export interface CustomerOrderForm {
     name: string;
     email: string;
     phone: string;
-    street?: string;
+    street: string;
     city: string;
     zip: string;
+    area: string;
     address: string;
   };
 

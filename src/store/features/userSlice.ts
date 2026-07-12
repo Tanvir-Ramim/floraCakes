@@ -16,7 +16,7 @@ export interface IUser {
     city: string;
   };
   authType: string;
- 
+
   orderHistory: any[];
   quotationHistory: any[];
   feedbackComplaints: any[];
@@ -28,7 +28,6 @@ export interface IUser {
   relatives: any[];
 
   customerId: string;
- 
 }
 
 interface IInit {
@@ -68,14 +67,15 @@ const userSlice = createSlice({
       state.error = null;
     },
 
+  
+
     loginFailure: (state, action: PayloadAction<string>) => {
-         state.user = null;
+      state.user = null;
       state.isAuthenticated = false;
       state.loginTime = null;
       state.lastActivity = null;
       state.error = null;
       state.error = action.payload;
-    
     },
 
     // Logout action
@@ -106,7 +106,7 @@ const userSlice = createSlice({
     // Update specific user fields
     updateUserField: (
       state,
-      action: PayloadAction<{ field: keyof IUser; value: any }>
+      action: PayloadAction<{ field: keyof IUser; value: any }>,
     ) => {
       if (state.user) {
         (state.user as any)[action.payload.field] = action.payload.value;
@@ -117,7 +117,7 @@ const userSlice = createSlice({
     // Update contact information
     updateContactInfo: (
       state,
-      action: PayloadAction<Partial<IUser["contactInformation"]>>
+      action: PayloadAction<Partial<IUser["contactInformation"]>>,
     ) => {
       if (state.user) {
         state.user.contactInformation = {
@@ -131,7 +131,7 @@ const userSlice = createSlice({
     // Update address
     updateAddress: (
       state,
-      action: PayloadAction<Partial<IUser["address"]>>
+      action: PayloadAction<Partial<IUser["address"]>>,
     ) => {
       if (state.user) {
         state.user.address = {
@@ -201,6 +201,7 @@ const userSlice = createSlice({
 });
 
 export const {
+  loginUpdate,
   loginStart,
   loginSuccess,
   loginFailure,

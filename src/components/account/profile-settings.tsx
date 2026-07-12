@@ -8,16 +8,18 @@ import Button from "../ui/button/button";
 import Input from "../ui/input/Input";
 import { useCustomerInfo } from "../utils/selectedItem";
 import { useCustomer } from "@/hooks/useCustomer";
-
+import { useDispatch } from "react-redux";
+import { loginUpdate } from "@/store/features/userSlice";
 
 export default function ProfileSettings() {
   const user = useCustomerInfo();
-  const { updateCustomer, isUpdating } = useCustomer(user.user?.customerId);
+  const { updateCustomer, isUpdating } = useCustomer(
+    user.user?.customerId,
+  );
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
-
   const [formData, setFormData] = useState({
     fullName: user.user?.name || "",
     email: user.user?.contactInformation?.email || "",
@@ -46,6 +48,11 @@ export default function ProfileSettings() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
+
+
+   
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -86,7 +93,6 @@ export default function ProfileSettings() {
       }
 
       await updateCustomer(fd);
-
       toast.success("Profile updated successfully!", {
         position: "bottom-right",
         autoClose: 5000,
@@ -105,6 +111,8 @@ export default function ProfileSettings() {
       });
     }
   };
+  const url =
+    "https://media.istockphoto.com/id/2168774111/vector/avatar-or-person-sign-profile-picture-portrait-icon-user-profile-symbol.jpg?s=612x612&w=0&k=20&c=6qw1LRG53z00RXJnVKQC58W7XnW2gdQfGBIR43E97Oc=";
 
   return (
     <div>
@@ -123,11 +131,7 @@ export default function ProfileSettings() {
       <div className="flex justify-center items-center mb-10">
         <div className="relative w-[100px] border border-border-color rounded-full h-[100px]">
           <Image
-            src={
-              imagePreview || 
-              user.user?.customerImage?.url || 
-              "/profile.png"
-            }
+            src={imagePreview || user.user?.customerImage?.url || url}
             alt="Profile"
             width={100}
             height={100}

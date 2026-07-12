@@ -38,23 +38,52 @@ const AddonItems: React.FC<AddonItemsProps> = ({
     addon();
   }, []);
   const handleflavorToggle = (flavorName: string) => {
-    const newFlavor = flavors.find((flavor) => flavor?.name === flavorName);
+    const newFlavor = flavors?.find((flavor) => flavor?.name === flavorName);
     if (!newFlavor) return;
 
     setSelectedflavors((prev) =>
-      prev?.name === flavorName ? prev : newFlavor
+      prev?.name === flavorName ? prev : newFlavor,
     );
   };
+
+  const gitArra: IAddon[] = [
+    {
+      name: "Number Mombatti",
+      price: 130,
+      image: {
+        title: "d",
+        url: "https://4.imimg.com/data4/RE/GD/MY-27548687/digital-candle-1000x1000.jpg",
+        public_id: "sdf",
+      },
+    },
+    {
+      image: {
+        public_id: "sdf",
+        title: "d",
+        url: "https://syedbakersmartbd.com/wp-content/uploads/2024/03/2222222222.webp",
+      },
+      name: "Cake Knife",
+      price: 60,
+    },
+    {
+      image: {
+        public_id: "sdf",
+        title: "d",
+        url: "https://www.shutterstock.com/image-photo/happy-birthday-celebration-balloons-candles-260nw-149515151.jpg",
+      },
+      name: "Normal Mombatti",
+      price: 100,
+    },
+  ];
 
   const handleItemToggle = (itemName: string) => {
     setSelectedItems((prev) =>
       prev.some((i) => i.name === itemName)
         ? prev.filter((i) => i.name !== itemName)
-        : [...prev, addonItems.find((item) => item?.name === itemName)!]
+        : [...prev, gitArra?.find((item) => item?.name === itemName)!],
     );
   };
-  console.log({ cart });
-  
+
   return (
     <div className="w-full relative  z-0">
       <button
@@ -67,16 +96,11 @@ const AddonItems: React.FC<AddonItemsProps> = ({
       </button>
 
       <div
-        className={`origin-top-right absolute top-10 left-[50%] lg:left-[50%]
-           transform -translate-x-1/2 w-full lg:min-w-[220px] bg-white border border-slate-200 p-4 rounded-lg shadow-xl transition-all duration-300 ease-out ${
-             showAddonTable
-               ? "opacity-100 translate-y-0 visible "
-               : "opacity-0 translate-y-2 invisible"
-           }`}
+        className={` w-full lg:min-w-[220px] bg-white border border-slate-200 p-4 rounded-lg shadow-xl transition-all duration-300 ease-out `}
         onMouseEnter={() => setShowAddonTable(true)}
         onMouseLeave={() => setShowAddonTable(false)}
       >
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-3 `}>
+        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-3 `}>
           {/* flavors Section */}
           <div className="bg-white rounded-2xl shadow-md p-4 border border-gray-200">
             <h3 className="text-lg font-semibold text-gray-800 mb-4">
@@ -169,20 +193,16 @@ const AddonItems: React.FC<AddonItemsProps> = ({
             </h3>
 
             <div className="space-y-3">
-              {addonItems.map((item: IAddon) => (
+              {gitArra?.map((item) => (
                 <div
                   key={item?.name}
                   className="flex items-center justify-between p-3 border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors"
                 >
                   <div className="flex items-center gap-4">
-                    {/* Item image with checkbox overlay */}
                     <div className="relative w-16 h-16 rounded-md overflow-hidden bg-gray-100 flex-shrink-0">
-                      {item?.image?.public_id ? (
+                      {item?.image ? (
                         <Image
-                          src={buildCloudinaryUrl(
-                            item?.image.public_id,
-                            "q_auto,f_auto,w_200,h_200,c_fill"
-                          )}
+                          src={item?.image?.url}
                           alt={item?.name}
                           width={64}
                           height={64}
@@ -200,20 +220,17 @@ const AddonItems: React.FC<AddonItemsProps> = ({
                         </div>
                       )}
 
-                      {/* Checkbox overlay */}
                       <div className="absolute top-1 right-1 bg-white/80 p-1 rounded-full shadow-xs">
                         <input
                           type="checkbox"
                           checked={selectedItems?.some(
-                            (i) => i.name === item?.name
+                            (i) => i.name === item?.name,
                           )}
                           onChange={() => handleItemToggle(item?.name)}
                           className="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary"
                         />
                       </div>
                     </div>
-
-                    {/* Item name and price */}
                     <div>
                       <h4 className="font-medium text-gray-800">
                         {item?.name}

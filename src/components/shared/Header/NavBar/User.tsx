@@ -1,4 +1,5 @@
 import { RootState } from "@/store";
+import { logout } from "@/store/features/userSlice";
 import Image from "next/image";
 import { useState } from "react";
 import { CiUser } from "react-icons/ci";
@@ -7,19 +8,19 @@ import { MdAccountCircle, MdLogout } from "react-icons/md";
 import { PiSignIn } from "react-icons/pi";
 import { SiEventstore } from "react-icons/si";
 import { TbShoppingBagHeart } from "react-icons/tb";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const User = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-
+  const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user.user);
   const cartItems = useSelector((state: RootState) => state.wish.items);
-  console.log({ user });
+
   const toggleMenu = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
   const url =
-    "https://res.cloudinary.com/ds6zprd3z/image/upload/v1748006795/0e1c4e61d20e31b32739b7616d65f5b5_bq64ov.jpg";
+    "https://media.istockphoto.com/id/2168774111/vector/avatar-or-person-sign-profile-picture-portrait-icon-user-profile-symbol.jpg?s=612x612&w=0&k=20&c=6qw1LRG53z00RXJnVKQC58W7XnW2gdQfGBIR43E97Oc=";
   return (
     <div>
       <li
@@ -28,7 +29,7 @@ const User = () => {
         onMouseLeave={() => setOpenIndex(null)}
       >
         <a
-          className="text-slate-800 hover:text-slate-900 flex items-center gap-2"
+          className="text-slate-800  hover:text-slate-900 flex items-center gap-2"
           href="#0"
           onClick={() => toggleMenu(0)}
           aria-expanded={openIndex === 0 ? "true" : "false"}
@@ -37,12 +38,12 @@ const User = () => {
             <Image
               src={user?.customerImage?.url || url}
               alt="user"
-              width={24}
-              height={24}
-              className="rounded-full"
+              width={34}
+              height={34}
+              className="rounded-full md:w-8 md:h-8 h-6 w-6  bg-center bg-cover"
             />
           ) : (
-            <CiUser className="w-5 h-5" />
+            <CiUser className="w-7 h-7" />
           )}
         </a>
         <button
@@ -120,15 +121,15 @@ const User = () => {
                 </a>
               </li>
               <li>
-                <a
-                  href="/logout"
+                <h1
+                  onClick={() => dispatch(logout())}
                   className="text-slate-800 text-sm hover:text-author flex items-center p-2"
                 >
                   <div className="flex items-center justify-center h-7 w-7 mr-3">
                     <MdLogout />
                   </div>
                   Logout
-                </a>
+                </h1>
               </li>
             </>
           )}

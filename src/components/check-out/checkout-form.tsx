@@ -15,14 +15,17 @@ import { useSelectedItem } from "../utils/selectedItem";
 import { useCalculatedItem } from "../utils/calculationItem";
 import CheckoutSummary from "../cart/CheckoutSummary";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
 
 const orderSchema = z.object({
   customer: z.object({
     name: z.string().min(1, "Name is required"),
     email: z.string().email("Invalid email"),
     phone: z.string().min(1, "Phone is required"),
-    street: z.string().optional(),
+    street: z.string().min(1, "Street is required"),
     city: z.string().min(1, "City is required"),
+    area: z.string().min(1, "Area is required"),
     zip: z.string().min(1, "ZIP code is required"),
     address: z.string().min(1, "Address is required"),
   }),
@@ -34,7 +37,7 @@ const orderSchema = z.object({
       z.object({
         name: z.string(),
         price: z.number(),
-      })
+      }),
     )
     .optional(),
   paymentType: z.string().min(1, "Payment type is required"),
@@ -89,6 +92,8 @@ export default function OrderForm() {
   const router = useRouter();
   const createOrderMutation = useOrderHook(router);
   const [estimatedCost, setEstimatedCost] = useState<number | null>(null);
+  const user = useSelector((state: RootState) => state.user.user);
+  console.log(user);
   // Get Redux values at the top level
   const item = useSelectedItem();
   const cal = useCalculatedItem();
@@ -158,12 +163,14 @@ export default function OrderForm() {
     defaultValues: {
       // Initialize with empty/default values
       customer: {
-        name: "",
-        email: "",
-        phone: "",
-        city: "",
-        zip: "",
-        address: "",
+        name: user?.name || "",
+        email: user?.contactInformation.email || "",
+        phone: user?.contactInformation?.phone || "",
+        city: user?.address.city || "",
+        zip: user?.address?.zipCode || "",
+        street: user?.address?.street || "",
+        area: user?.address?.area || "",
+        address: "demo",
       },
       isDelivery: false,
       isGift: false,
@@ -232,16 +239,10 @@ export default function OrderForm() {
     }
   }, [cal, isInitialized, setValue, watch]);
 
-  // Debugging
-  useEffect(() => {
-    console.log("Current form values:", watch());
-  }, [watch]);
-
   const isDelivery = watch("isDelivery");
   const isGift = watch("isGift");
   const customized = watch("customized");
   const deliveryDate = watch("deliveryDate");
-  console.log(watch());
 
   // customer
   const watchedFields = watch([
@@ -250,9 +251,11 @@ export default function OrderForm() {
     "customer.phone",
     "customer.city",
     "customer.zip",
+    "customer.area",
+    "customer.street",
   ]);
   const hasRequiredFields = watchedFields.every(
-    (field) => field && field.trim() !== ""
+    (field) => field && field.trim() !== "",
   );
 
   const canProceed = hasRequiredFields;
@@ -260,7 +263,7 @@ export default function OrderForm() {
   // delivery info
   const watchedFieldsDelivery = watch(["deliveryDate", "deliveryTime"]);
   const hasRequiredFieldsDelivery = watchedFieldsDelivery.every(
-    (field) => field && field !== ""
+    (field) => field && field !== "",
   );
 
   const canProceedDelivery = hasRequiredFieldsDelivery;
@@ -283,6 +286,20 @@ export default function OrderForm() {
   };
   const nextStep = () => setStep((prev) => Math.min(prev + 1, 4));
   const prevStep = () => setStep((prev) => Math.max(prev - 1, 1));
+
+  const city = watch("customer.city");
+  const area = watch("customer.area");
+  const street = watch("customer.street");
+
+  useEffect(() => {
+    const fullAddress = [street, area, city]
+      .filter(Boolean) // removes empty values
+      .join(", ");
+
+    setValue("customer.address", fullAddress);
+  }, [street, area, city, setValue]);
+
+  console.log(watch());
 
   // Add a loading guard
   if (!item || !cal) {
@@ -327,6 +344,7 @@ export default function OrderForm() {
                 </label>
                 <input
                   {...register("customer.name")}
+                  disabled={user?.name ? true : false}
                   className="w-full p-2  bg-gray-100"
                   placeholder="Your full name"
                 />
@@ -344,6 +362,7 @@ export default function OrderForm() {
                 <input
                   {...register("customer.email")}
                   type="email"
+                  disabled={user?.contactInformation?.email ? true : false}
                   className="w-full p-2  bg-gray-100"
                   placeholder="your@email.com"
                 />
@@ -360,6 +379,7 @@ export default function OrderForm() {
                 </label>
                 <input
                   {...register("customer.phone")}
+                  disabled={user?.contactInformation?.phone ? true : false}
                   className="w-full p-2  bg-gray-100"
                   placeholder="Your phone number"
                 />
@@ -376,6 +396,7 @@ export default function OrderForm() {
                 </label>
                 <input
                   {...register("customer.city")}
+                  disabled={user?.address?.city ? true : false}
                   className="w-full p-2  bg-gray-100"
                   placeholder="Your city"
                 />
@@ -392,6 +413,7 @@ export default function OrderForm() {
                 </label>
                 <input
                   {...register("customer.zip")}
+                  disabled={user?.address?.zipCode ? true : false}
                   className="w-full p-2  bg-gray-100"
                   placeholder="ZIP code"
                 />
@@ -404,17 +426,39 @@ export default function OrderForm() {
 
               <div>
                 <label className="block text-sm font-medium mb-1 text-gray-700">
-                  Street Address
+                  Area
                 </label>
                 <input
-                  {...register("customer.street")}
+                  {...register("customer.area")}
+                  disabled={user?.address?.area ? true : false}
                   className="w-full p-2  bg-gray-100"
-                  placeholder="Street address (optional)"
+                  placeholder="Area"
                 />
+                {errors.customer?.area && (
+                  <p className="text-red-500 text-sm">
+                    {errors.customer.area.message}
+                  </p>
+                )}
               </div>
             </div>
 
             <div>
+              <label className="block text-sm font-medium mb-1 text-gray-700">
+                Street Address
+              </label>
+              <input
+                {...register("customer.street")}
+                disabled={user?.address?.street ? true : false}
+                className="w-full p-2  bg-gray-100"
+                placeholder="Street address"
+              />
+              {errors.customer?.street && (
+                <p className="text-red-500 text-sm">
+                  {errors.customer.street.message}
+                </p>
+              )}
+            </div>
+            <div className="hidden">
               <label className="block text-sm font-medium mb-1 text-gray-700">
                 Full Address
               </label>

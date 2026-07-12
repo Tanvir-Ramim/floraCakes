@@ -2,7 +2,7 @@ import { CustomerOrderForm } from "@/@types";
 import { toast } from "react-toastify";
 
 export const mapCustomerOrderToModel = (
-  formData: CustomerOrderForm
+  formData: CustomerOrderForm,
 ): FormData => {
   const fd = new FormData();
   console.log("hhh", formData.regularFiles);
@@ -19,8 +19,8 @@ export const mapCustomerOrderToModel = (
   const deliveryType = formData.isGift
     ? "Gift"
     : formData.isDelivery
-    ? "Delivery"
-    : "Regular";
+      ? "Delivery"
+      : "Regular";
 
   // Add-on calculation
   if (Array.isArray(formData.addOn) && formData.addOn.length) {
@@ -62,6 +62,7 @@ export const mapCustomerOrderToModel = (
   fd.append("customerInfo[email]", formData.customer.email);
   fd.append("customerInfo[phone]", formData.customer.phone);
   fd.append("customerInfo[street]", formData.customer.street || "");
+  fd.append("customerInfo[area]", formData.customer.area || "");
   fd.append("customerInfo[city]", formData.customer.city);
   fd.append("customerInfo[zip]", formData.customer.zip);
   fd.append("customerInfo[location]", formData.customer.address);
@@ -71,25 +72,25 @@ export const mapCustomerOrderToModel = (
     "deliveryInfo[deliveryAddress][street]",
     formData.isGift || formData.isDelivery
       ? formData.delivery?.street || ""
-      : formData.customer.street || ""
+      : formData.customer.street || "",
   );
   fd.append(
     "deliveryInfo[deliveryAddress][city]",
     formData.isGift || formData.isDelivery
       ? formData.delivery?.city || ""
-      : formData.customer.city
+      : formData.customer.city,
   );
   fd.append(
     "deliveryInfo[deliveryAddress][zip]",
     formData.isGift || formData.isDelivery
       ? formData.delivery?.zip || ""
-      : formData.customer.zip
+      : formData.customer.zip,
   );
   fd.append(
     "deliveryInfo[deliveryAddress][location]",
     formData.isGift || formData.isDelivery
       ? formData.delivery?.address || ""
-      : formData.customer.address
+      : formData.customer.address,
   );
 
   // Gift recipient info if applicable
@@ -107,20 +108,17 @@ export const mapCustomerOrderToModel = (
     fd.append("customInfo[name]", formData.customizedCakeDetails.cakeName);
     fd.append(
       "customInfo[servingSize]",
-      formData.customizedCakeDetails.cakeWeight
+      formData.customizedCakeDetails.cakeWeight,
     );
-    fd.append(
-      "customInfo[flavor]",
-      formData.customizedCakeDetails.flavor
-    );
+    fd.append("customInfo[flavor]", formData.customizedCakeDetails.flavor);
 
     fd.append(
       "customInfo[description]",
-      `${formData.customizedCakeDetails.description} <br/> Shape:${formData.customizedCakeDetails.shape} <br/> Layer: ${formData.customizedCakeDetails.layers}`
+      `${formData.customizedCakeDetails.description} <br/> Shape:${formData.customizedCakeDetails.shape} <br/> Layer: ${formData.customizedCakeDetails.layers}`,
     );
     fd.append(
       "customInfo[estimatePrice]",
-      Number(formData.customizedCakeDetails.price).toString()
+      Number(formData.customizedCakeDetails.price).toString(),
     );
     fd.append("customInfo[quantity]", "1");
   } else {
@@ -133,7 +131,7 @@ export const mapCustomerOrderToModel = (
     fd.append("cakeInfo[category]", formData.category || "");
     fd.append(
       "cakeInfo[discountAmount]",
-      Number(formData.discountAmount).toString()
+      Number(formData.discountAmount).toString(),
     );
     fd.append("cakeInfo[sizePrice]", Number(formData.sizePrice).toString());
     fd.append("cakeInfo[cakePrice]", Number(formData.cakePrice).toString());
@@ -142,7 +140,7 @@ export const mapCustomerOrderToModel = (
     fd.append("cakeInfo[flavor][name]", formData.flavor);
     fd.append(
       "cakeInfo[flavor][price]",
-      Number(formData.flavorPrice).toString()
+      Number(formData.flavorPrice).toString(),
     );
   }
 
@@ -150,19 +148,19 @@ export const mapCustomerOrderToModel = (
   if (orderType === "Custom" && formData.customizedCakeDetails) {
     fd.append(
       "paymentInfo[orderAmount]",
-      Number(formData.customizedCakeDetails.price).toString()
+      Number(formData.customizedCakeDetails.price).toString(),
     );
   } else {
     fd.append(
       "paymentInfo[orderAmount]",
-      Number(formData.finalPrice).toString()
+      Number(formData.finalPrice).toString(),
     );
   }
 
   if (formData.paymentType === "partial") {
     fd.append(
       "paymentInfo[paymentAmount]",
-      Number(formData.partialPaymentAmount || 0).toString()
+      Number(formData.partialPaymentAmount || 0).toString(),
     );
   } else if (formData.paymentType === "Unpaid") {
     fd.append("paymentInfo[paymentAmount]", "0");
@@ -183,7 +181,7 @@ export const mapCustomerOrderToModel = (
   // Status info
   fd.append(
     "paymentStatus",
-    formData.paymentType === "Unpaid" ? "Unpaid" : "Full-Paid"
+    formData.paymentType === "Unpaid" ? "Unpaid" : "Full-Paid",
   );
   fd.append("paymentMethod", formData.paymentMethod);
   fd.append("orderStatus", "Pending");

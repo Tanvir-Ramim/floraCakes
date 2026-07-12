@@ -1,9 +1,10 @@
-import {  useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { customerService } from "@/services/customer-service";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { IActivites, IRelative, ISpecialEvent } from "@/@types";
-
+import { useDispatch } from "react-redux";
+import { updateUser } from "@/store/features/userSlice";
 
 interface UpdateCustomerParams {
   contactInformation?: {
@@ -33,9 +34,13 @@ interface UpdateCustomerParams {
 export const useCustomer = (customerId?: string) => {
   const router = useRouter();
   const queryClient = useQueryClient();
-
+  const dispatch = useDispatch();
   // Get customer data
-  const { data: customer, isLoading, error } = useQuery({
+  const {
+    data: customer,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["customer", customerId],
     queryFn: () => customerService.getCustomer(customerId!),
     enabled: !!customerId,
@@ -47,14 +52,22 @@ export const useCustomer = (customerId?: string) => {
       if (!customerId) throw new Error("Customer ID is required");
       return customerService.updateCustomer(customerId, formData);
     },
-    onSuccess: () => {
+    onSuccess: (response) => {
       toast.success("Profile updated successfully");
-      queryClient.invalidateQueries({ queryKey: ["customer", customerId] });
+      console.log(response.data);
+      // Dispatch updated user
+      dispatch(updateUser(response.data));
+
+      queryClient.invalidateQueries({
+        queryKey: ["customer", customerId],
+      });
     },
     onError: (error: any) => {
       toast.error(error.response?.data?.message || "Failed to update profile");
     },
   });
+  // console.log(updateMutation.data?.data);
+  // dispatch(updateUser(updateMutation.data?.data));
 
   // Helper function to handle form data preparation
   const prepareUpdateData = (formData: any): UpdateCustomerParams => {
@@ -63,6 +76,7 @@ export const useCustomer = (customerId?: string) => {
         email: formData.email,
         phone: formData.phone,
       },
+
       occupation: formData.occupation,
       specialPreferences: formData.specialPreferences,
       address: formData.address,

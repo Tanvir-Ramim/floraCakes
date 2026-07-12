@@ -158,14 +158,13 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
           onClick={() => {
             // Handle add to cart logic here
             handleAddToCart();
-            console.log("Add to Cart clicked");
           }}
         />
-        <Button
+        {/* <Button
           label="Buy Now"
           variant="outline"
           className="px-6 py-2 bg-buy-now text-white hover:bg-author border-none"
-        />
+        /> */}
       </div>
 
       {/* sku */}

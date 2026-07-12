@@ -10,7 +10,7 @@ export default function GiftSection() {
       {/* Blog Posts Section */}
       <Container className=" md:mt-0 mt-5">
         <section className="md:pt-16  md:pb-12 pt-9 bg-white">
-          <div className=" mx-auto  sm:px-6 lg:px-8">
+          <div className=" mx-auto   ">
             <div className="bg-gray-50 rounded-xl shadow-sm overflow-hidden border border-gray-200">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
                 <div className="p-3 lg:p-8 md:p-6 xl:p-10 flex flex-col justify-center">

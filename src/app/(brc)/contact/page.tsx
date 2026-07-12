@@ -23,7 +23,7 @@ const contactData = {
   subtitle: "We'd love to hear from you",
   description:
     "Borsalle is an award-winning artisan cake boutique company in Dhaka. We specialize in exquisitely hand-crafted premium celebration cakes and other desserts for any occasion. We have a team of highly skilled cake designers and decorators who can create a truly personalized and memorable cake that is bound to delight your special occasion",
-  address: "Mirpur DOHS, Dhaka, Dhaka 1216, BD",
+  address: "Mohakhali DOHS, Dhaka, Dhaka 1216, BD",
   phone: "+88 01322555996",
   email: "hello@borsalle.com",
   hours: "Monday - Saturday: 9am - 6pm, Sunday: 10am - 4pm",
