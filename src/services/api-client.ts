@@ -2,7 +2,7 @@ import axios from "axios";
 
 // export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 // export const API_BASE_URL = "http://localhost:8080/borsalle/v1"; // Replace with your actual API base URL
-export const API_BASE_URL = "https://borsalleserver.onrender.com/borsalle/v1"; // Replace with your actual API base URL
+export const API_BASE_URL = "https://tangailborsalleserver.vercel.app/borsalle/v1"; // Replace with your actual API base URL
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
