@@ -18,7 +18,7 @@ const CheckoutPageComponent = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
             <div className="block md:hidden px mb-4">
-              <Accordion
+              {/* <Accordion
                 title="Order Summery"
                 onToggle={toggleAccordion}
                 isOpen={isOpen}
@@ -27,7 +27,7 @@ const CheckoutPageComponent = () => {
                  cursor-pointer text-title"
               >
                 <OrderDetails />
-              </Accordion>
+              </Accordion> */}
             </div>
             <CheckoutForm />
           </div>
