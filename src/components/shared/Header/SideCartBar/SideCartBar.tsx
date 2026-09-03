@@ -130,10 +130,10 @@ const SideCartBar = ({ onClose }: SideCartBarProps) => {
           </Button>
         </Link>
 
-        <Link href="/" className="w-full">
+        <Link href="/checkout" className="w-full">
           <Button
             onClick={onClose}
-            label="Check Out"
+            label="Check Outs"
             variant="secondary"
           />
         </Link>
