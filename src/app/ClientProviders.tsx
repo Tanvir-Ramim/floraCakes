@@ -14,7 +14,7 @@ export default function ClientProviders({ children }: { children: ReactNode }) {
       <PersistGate loading={null} persistor={persistor}>
         <QueryProvider>
           {children}
-          <ToastContainer />
+          <ToastContainer position="bottom-right" />
         </QueryProvider>
       </PersistGate>
     </Provider>

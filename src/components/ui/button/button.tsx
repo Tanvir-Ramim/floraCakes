@@ -36,7 +36,7 @@ const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       type={type}
       className={cn(
-        "px-6 w-full py-3 duration-300 cursor-pointer text-[12px] ",
+        "px-6 w-full py-3 duration-300 cursor-pointer sm:text-[12px] text-[10px] ",
         layout === "vertical"
           ? "flex flex-col items-center justify-center"
           : "flex items-center justify-center",

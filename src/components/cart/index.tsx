@@ -17,7 +17,7 @@ const CartPageComponent = () => {
   // fetch items from reduxsclice
 
   const items = useSelector((state: RootState) => state.cart.items);
-
+      console.log(items)
   // Determine shipping cost
 
   return (
@@ -41,12 +41,12 @@ const CartPageComponent = () => {
               </div>
 
               <div className="mt-4">
-                {items.length > 0 ? (
+                {items?.length > 0 ? (
                   <Link href="/checkout">
                     <Button variant="primary" label="Check Out" />
                   </Link>
                 ) : (
-                  <Button variant="primary" label="Check Out" disabled />
+                  <Button  variant="primary" label="Check Out" disabled />
                 )}
               </div>
             </div>

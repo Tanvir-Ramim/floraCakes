@@ -7,7 +7,7 @@ export default function ShippingProgress({}) {
   const selectedItem = items.find((item) => item.isSelected === true);
 
   return (
-    <div className=" bg-[#F8F9FA] py-5 relative">
+    <div className=" bg-[#F8F9FA]  relative">
       {
         (selectedItem?.thumbImage?.url || selectedItem?.img) && (
           <Image
@@ -22,7 +22,7 @@ export default function ShippingProgress({}) {
             className="w-full object-cover  rounded-md mx-auto mb-4"
           />
         )}
-      <p className={` text-base  absolute ${selectedItem?.title ? "bottom-11 " :"bottom-1"} ml-1.5 pt-6 `}>
+      <p className={` text-base  absolute ${selectedItem?.title ? "bottom-1 " :"bottom-1"} ml-1.5 pt-6 `}>
         {selectedItem?.title || "No item selected"}
         <br />
         {selectedItem?.id}

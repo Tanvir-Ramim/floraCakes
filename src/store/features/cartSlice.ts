@@ -47,17 +47,50 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    // addToCart(state, action: PayloadAction<ICartItem>) {
+    //   const item = action.payload;
+
+    //   const existing = state.items.find((i) => i.id === item.id);
+
+    //   if (existing) {
+    //     state.items = state.items.filter((item) => item.id !== existing.id);
+    //     state.items.push(item);
+    //   } else {
+    //     state.items.push(item);
+    //   }
+    // },
     addToCart(state, action: PayloadAction<ICartItem>) {
       const item = action.payload;
 
       const existing = state.items.find((i) => i.id === item.id);
 
-      if (existing) {
-        state.items = state.items.filter((item) => item.id !== existing.id);
-        state.items.push(item);
-      } else {
-        state.items.push(item);
+      // If this is the first item in the cart
+      if (state.items.length === 0) {
+        state.items.push({
+          ...item,
+          isSelected: true,
+        });
+
+        return;
       }
+
+      // If item already exists
+      if (existing) {
+        state.items = state.items.filter((i) => i.id !== existing.id);
+
+        state.items.push({
+          ...item,
+          isSelected: existing.isSelected,
+        });
+
+        return;
+      }
+
+      // Add new item
+      state.items.push({
+        ...item,
+        isSelected: false,
+      });
     },
     addMessageToItem(
       state,
@@ -68,7 +101,7 @@ const cartSlice = createSlice({
           note: string;
           orderInstructions: string;
         };
-      }>
+      }>,
     ) {
       const { id, message } = action.payload;
 
@@ -93,7 +126,7 @@ const cartSlice = createSlice({
     },
     addCoupon(
       state,
-      action: PayloadAction<{ code: string; discount: number }>
+      action: PayloadAction<{ code: string; discount: number }>,
     ) {
       const coupon = action.payload;
       const item = state.items.find((item) => item.isSelected === true);
@@ -104,7 +137,7 @@ const cartSlice = createSlice({
     },
     addShippingInfo(
       state,
-      action: PayloadAction<{ city: string; area: string; cost: number }>
+      action: PayloadAction<{ city: string; area: string; cost: number }>,
     ) {
       const { city, area, cost } = action.payload;
 

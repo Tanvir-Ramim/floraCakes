@@ -14,7 +14,6 @@ import {
   updatePrice,
 } from "@/store/features/cartSlice";
 import { AnimatePresence, motion } from "framer-motion";
-
 import { useCallback, useEffect, useState } from "react";
 import { BsGift } from "react-icons/bs";
 import { FiFileText } from "react-icons/fi";
@@ -54,7 +53,7 @@ const ActionButton = () => {
   // Determine shipping cost
 
   const handleMessage = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     // Handle the change event for order instructions
     setUserMessage((prev) => ({
@@ -64,16 +63,16 @@ const ActionButton = () => {
   };
   const handleItemMessage = () => {
     if (!selectedItemId?.id) {
-      alert("Please select an item to add a message.");
+      toast.warning("Please select an item to add a message.");
       return;
     }
     dispatch(
       addMessageToItem({
         id: selectedItemId?.id,
         message: userMessage,
-      })
+      }),
     );
-    alert("Message added successfully!");
+    toast.success("Message added successfully!");
   };
 
   const [selectedWeight, setSelectedWeight] = useState<{
@@ -150,13 +149,13 @@ const ActionButton = () => {
       <div>
         {selectedItemId?.weight && (
           <h3 className="text-sm font-medium mb-2">
-            Weight:
-            <span className="text-subtitle text-sm capitalize">
+            Weight :
+            <span className="text-subtitle ml-1  text-sm capitalize">
               {selectedItemId?.weight}
             </span>
           </h3>
         )}
-        <div className="flex overflow-x-auto py-1 gap-2 mb-5">
+        <div className="flex overflow-x-auto py-1 gap-2 mb-5 ">
           {selectedItemId?.cake?.servingSize?.map((w, ind: number) => (
             <button
               key={ind}
@@ -169,7 +168,7 @@ const ActionButton = () => {
               }`}
               aria-label={`Select ${w.weight} weight`}
             >
-              {w.weight}kg : {w.price}
+              {w.weight} : {w.price}
             </button>
           ))}
         </div>
@@ -179,7 +178,7 @@ const ActionButton = () => {
           icon={<FiFileText />}
           label="Add note"
           layout="vertical"
-          className="px-1 text-xs font-normal"
+          className="px-1  text-xs  font-normal"
           variant="default"
           onClick={toggleNote}
         />
@@ -210,9 +209,9 @@ const ActionButton = () => {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="p-4 border-b border-border-color">
+            <div className="md:p-2 border-b border-border-color">
               <OrderInstructions onChange={handleMessage} />
-              <div className="mt-8">
+              <div className="mt-2 mb-2">
                 <Button
                   onClick={() => handleItemMessage()}
                   label="Submit"

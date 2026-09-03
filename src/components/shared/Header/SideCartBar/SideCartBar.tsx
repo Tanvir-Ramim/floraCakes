@@ -62,72 +62,85 @@ const SideCartBar = ({ onClose }: SideCartBarProps) => {
   const totalPrice = Math.max(subtotal - discount, 0);
   const shippingCost = totalPrice >= 500 ? 0 : 120;
   return (
-    <motion.div
-      variants={backdropVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      className="fixed inset-0 bg-[#262626]/20 bg-opacity-50 z-40 h-full w-full flex items-center justify-center"
-    >
-      <motion.div
-        variants={modalVariants}
-        ref={cartRef}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-        className="bg-[#fff] lg:w-2/6 md:w-3/5 w-4/5 h-full   absolute top-0 right-0 shadow-lg lg:mb-2 md:pb-20 pb-10"
-      >
-        <div className="px-6 py-3  flex items-center justify-between text-xl shadow-md text-title">
-          <h2 className="text-lg font-medium">Your cart</h2>
-          <FaXmark onClick={onClose} className="cursor-pointer text-title" />
-        </div>
+<motion.div
+  variants={backdropVariants}
+  initial="hidden"
+  animate="visible"
+  exit="exit"
+  className="fixed inset-0 bg-[#262626]/20 z-40 h-full w-full flex items-center justify-center"
+>
+  <motion.div
+    variants={modalVariants}
+    ref={cartRef}
+    initial="hidden"
+    animate="visible"
+    exit="exit"
+    className="
+      bg-white
+      lg:w-2/6 md:w-3/5 w-4/5
+      h-full
+      absolute top-0 right-0
+      shadow-lg
+      flex flex-col
+      overflow-y-auto
+    "
+  >
+    {/* Header */}
+    <div className="sm:px-6 px-2 py-3 flex items-center justify-between text-xl shadow-md text-title shrink-0">
+      <h2 className="text-lg font-medium">Your cart</h2>
 
-        <div className="">
-          <div className="px-6  bg-[#F8F9FA]">
-            <ShippingProgress />
-          </div>
+      <FaXmark
+        onClick={onClose}
+        className="cursor-pointer text-title"
+      />
+    </div>
 
-          {/* fixed content for design */}
-          {/* <div className="overflow-y-auto h-[calc(100vh-200px)]">
-            {items?.map((item) => (
-              <SideCart key={item.title} item={item} />
-            ))}
-          </div> */}
+    {/* Shipping Progress */}
+    <div className="sm:px-6 sm:h-88 px-2 bg-[#F8F9FA] shrink-0">
+      <ShippingProgress />
+    </div>
 
-          <div className="bottom-0 absolute px-6 pb-10 w-full z-10 bg-white">
-            <div className="py-5">
-              {/* Action buttons */}
-              <ActionButton
-                onSaveNote={handleSaveNote}
-                onApplyCoupon={applyCoupon}
-                onGiftChange={handleGiftCheckboxChange}
-                giftOptions={giftOptions}
-                selectedGiftIds={selectedGiftIds}
-              />
-            </div>
-            <CheckoutSummary
-              subtotal={subtotal}
-              shippingCost={shippingCost}
-              discount={discount}
-            />
-            <div className="mt-4 flex items-center gap-2 cursor-pointer">
-              <Link href="/cart" className="w-full">
-                <Button onClick={onClose} label="View Cart" variant="primary">
-                  view cart
-                </Button>
-              </Link>
-              <Link href="/" className="w-full">
-                <Button
-                  onClick={onClose}
-                  label="Check Out"
-                  variant="secondary"
-                />
-              </Link>
-            </div>{" "}
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
+
+    {/* Bottom section */}
+    <div className=" sm:px-6 px-2 pb-5 w-full z-10 bg-white ">
+      <div className="py-5">
+        <ActionButton
+          onSaveNote={handleSaveNote}
+          onApplyCoupon={applyCoupon}
+          onGiftChange={handleGiftCheckboxChange}
+          giftOptions={giftOptions}
+          selectedGiftIds={selectedGiftIds}
+        />
+      </div>
+
+      <CheckoutSummary
+        subtotal={subtotal}
+        shippingCost={shippingCost}
+        discount={discount}
+      />
+
+      <div className="mt-4 flex items-center gap-2">
+        <Link href="/cart" className="w-full">
+          <Button
+            onClick={onClose}
+            label="More Cart"
+            variant="primary"
+          >
+            View Cart
+          </Button>
+        </Link>
+
+        <Link href="/" className="w-full">
+          <Button
+            onClick={onClose}
+            label="Check Out"
+            variant="secondary"
+          />
+        </Link>
+      </div>
+    </div>
+  </motion.div>
+</motion.div>
   );
 };
 

@@ -2,7 +2,7 @@ import { PriceBreakdown } from "../calculation/PriceBreakdown";
 
 export default function CheckoutSummary() {
   return (
-    <div>
+    <div className="mt-2">
       <PriceBreakdown />
 
       <p className="text-xs italic text-subtitle">

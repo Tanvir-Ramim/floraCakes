@@ -14,6 +14,7 @@ import DesktopNavigation from "./Desktop-navigation";
 import User from "./User";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
+import { toast } from "react-toastify";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,6 +51,14 @@ const NavBar = () => {
       document.body.classList.remove("overflow-hidden");
     }
   }, [isSearchOpen, isSiteCartOpen, isMenuOpen]);
+
+  const handleOpen = () => {
+    if (items?.length > 0) {
+      setIsSiteCartOpen(true);
+    } else {
+      toast.error("Add Item First");
+    }
+  };
 
   return (
     <header
@@ -108,9 +117,8 @@ const NavBar = () => {
               <h1 className="xl::block lg:hidden sm:block hidden">Search</h1>
             </button>
 
-            <Link
-              href="/cart"
-              onClick={() => setIsSiteCartOpen(true)}
+            <div
+              onClick={() => handleOpen()}
               className="text-title hover:text-hover-text 
               cursor-pointer transition-colors flex items-center"
               aria-label="Cart"
@@ -133,7 +141,7 @@ const NavBar = () => {
               </svg>
               <span className="ml-1 hidden md:block text-sm">Cart</span>{" "}
               <span className="text-sm">({items?.length || 0})</span>
-            </Link>
+            </div>
 
             <div
               ref={menuRef}
