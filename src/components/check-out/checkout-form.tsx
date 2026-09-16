@@ -2,7 +2,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useForm } from "react-hook-form";
+import { FieldPath, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
@@ -93,7 +93,7 @@ export default function OrderForm() {
   const createOrderMutation = useOrderHook(router);
   const [estimatedCost, setEstimatedCost] = useState<number | null>(null);
   const user = useSelector((state: RootState) => state.user.user);
-  console.log(user);
+
   // Get Redux values at the top level
   const item = useSelectedItem();
   const cal = useCalculatedItem();
@@ -173,7 +173,7 @@ export default function OrderForm() {
         address: "demo",
       },
       isDelivery: false,
-      isGift: false,
+      // isGift: false,
       customized: false,
       addOn: [],
       paymentType: "Unpaid",
@@ -259,11 +259,23 @@ export default function OrderForm() {
   );
 
   const canProceed = hasRequiredFields;
-
+  console.log(watch().deliveryDate);
   // delivery info
-  const watchedFieldsDelivery = watch(["deliveryDate", "deliveryTime"]);
+  const nextArray: FieldPath<CustomerOrderForm>[] = watch().isDelivery
+    ? [
+        "deliveryDate",
+        "deliveryTime",
+        "delivery.street",
+        "delivery.zip",
+        "delivery.city",
+        "delivery.address",
+      ]
+    : ["deliveryDate", "deliveryTime"];
+
+  const watchedFieldsDelivery = watch(nextArray);
+
   const hasRequiredFieldsDelivery = watchedFieldsDelivery.every(
-    (field) => field && field !== "",
+    (field) => field !== undefined && field !== "",
   );
 
   const canProceedDelivery = hasRequiredFieldsDelivery;
@@ -298,8 +310,6 @@ export default function OrderForm() {
 
     setValue("customer.address", fullAddress);
   }, [street, area, city, setValue]);
-
-  console.log(watch());
 
   // Add a loading guard
   if (!item || !cal) {
@@ -862,10 +872,10 @@ export default function OrderForm() {
           <div className="space-y-4">
             <h2 className="text-2xl font-bold">Delivery Information</h2>
             <div className="mt-6 ">
-              <ShippingEstimator
+              {/* <ShippingEstimator
                 estimatedCost={estimatedCost}
                 setEstimatedCost={setEstimatedCost}
-              />
+              /> */}
             </div>
             <div className="flex gap-4">
               <label className="flex items-center md:text-base text-sm">
@@ -877,7 +887,7 @@ export default function OrderForm() {
                 Delivery Required
               </label>
 
-              <label className="flex items-center md:text-base text-sm">
+              <label className="flex hidden items-center md:text-base text-sm">
                 <input
                   type="checkbox"
                   {...register("isGift")}
@@ -989,6 +999,7 @@ export default function OrderForm() {
                 <input
                   {...register("deliveryDate", { valueAsDate: true })}
                   type="date"
+                  defaultValue={new Date().toISOString().split("T")[0]}
                   className="w-full p-2  bg-gray-100"
                 />
               </div>

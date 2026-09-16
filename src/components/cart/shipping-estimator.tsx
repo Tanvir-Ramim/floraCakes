@@ -62,7 +62,7 @@ export default function ShippingEstimator({
 
     // Dispatch the shipping info to the store
     if (calculatedCost !== null) {
-      console.log({ calculatedCost });
+    
       dispatch(
         addShippingInfo({
           city,
