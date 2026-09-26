@@ -28,7 +28,6 @@ export const useOrderHook = (router: object) => {
       });
 
       toast.success("Order created successfully!");
-      console.log("order-data", data);
       dispatch(addUserDuringOrder(data.customer));
       dispatch(removeFromCart(data.order.cakeInfo.id));
       router.push(`/order/confirmation/${data.order.orderId}`);

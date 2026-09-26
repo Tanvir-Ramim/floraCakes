@@ -17,6 +17,7 @@ import CheckoutSummary from "../cart/CheckoutSummary";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
+import { toast } from "react-toastify";
 
 const orderSchema = z.object({
   customer: z.object({
@@ -502,7 +503,7 @@ export default function OrderForm() {
           <div className="space-y-4">
             <h2 className="text-2xl font-bold">Cake Details</h2>
 
-            <div className="flex gap-4">
+            <div className="flex hidden gap-4">
               <label className="flex items-center">
                 <input
                   type="checkbox"
@@ -1011,7 +1012,7 @@ export default function OrderForm() {
                   </label>
                 ) : (
                   <label className="block text-sm font-medium mb-1 text-gray-700">
-                    Delivery Time
+                    Delivery Time *
                   </label>
                 )}
                 <select
@@ -1056,13 +1057,21 @@ export default function OrderForm() {
               <Button
                 type="button"
                 label="Next"
-                onClick={nextStep}
+                onClick={() => {
+                  if (!canProceedDelivery) {
+                    toast.error(
+                      "Please complete the delivery information first.",
+                    );
+                    return;
+                  }
+
+                  nextStep();
+                }}
                 className={`w-1/4 md:w-1/6 ${
                   !canProceedDelivery
                     ? "opacity-50 cursor-not-allowed"
                     : "secondary"
                 }`}
-                disabled={!canProceedDelivery}
               />
             </div>
           </div>

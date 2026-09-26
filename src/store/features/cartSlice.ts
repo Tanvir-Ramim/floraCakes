@@ -149,6 +149,13 @@ const cartSlice = createSlice({
     },
     removeFromCart(state, action: PayloadAction<string>) {
       state.items = state.items.filter((item) => item.id !== action.payload);
+
+      // If items remain, select the first item
+      if (state.items.length > 0) {
+        state.items.forEach((item, index) => {
+          item.isSelected = index === 0;
+        });
+      }
     },
 
     updatePrice(state, action: PayloadAction<IUpdatePrice>) {
